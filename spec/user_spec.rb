@@ -18,7 +18,8 @@ RSpec.describe User, type: :model do
   it 'posts_counter should be greater than or equal to 0' do
     subject.posts_counter = -1
     expect(subject).to_not be_valid
-  
+  end
+
   describe '#recent_posts' do
     let(:user) { User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.', posts_counter: 0) }
     let!(:post1) { user.posts.create(title: 'Post 1', text: 'This is post 1', comments_counter: 0, likes_counters: 0) }
@@ -37,6 +38,5 @@ RSpec.describe User, type: :model do
       recent_posts = user.recent_posts
       expect(recent_posts).to be_empty
     end
-
   end
 end
