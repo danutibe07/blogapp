@@ -1,0 +1,14 @@
+<h1>User Details</h1>
+
+<p><strong>Name:</strong> <%= @user.name %></p>
+<p><strong>Bio:</strong> <%= @user.bio %></p>
+<p><strong>Photo:</strong></p>
+<%= image_tag @user.photo, width: 100 %>
+
+<h2>Recent Posts</h2>
+
+<ul>
+  <% @user.recent_posts.each do |post| %>
+    <li><%= post.title %></li>
+  <% end %>
+</ul>

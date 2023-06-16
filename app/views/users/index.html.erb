@@ -1,0 +1,17 @@
+<h1>Users</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Bio</th>
+    <th>Photo</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.name, user_path(user) %></td>
+      <td><%= user.bio %></td>
+      <td><%= link_to image_tag(user.photo, width: 50), user_path(user) %></td>
+    </tr>
+  <% end %>
+</table>
