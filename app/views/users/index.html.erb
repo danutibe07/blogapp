@@ -1,10 +1,1 @@
 <h1>Users</h1>
-
-
-  <% @users.each do |user| %>
-    <div>
-      <div><%= link_to image_tag(user.photo, width: 50), user_path(user) %></div>
-      <div><%= link_to user.name, user_path(user) %></div>
-      <div><%= user.bio %></div>
-    </div>
-  <% end %>
