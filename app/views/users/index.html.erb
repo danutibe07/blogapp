@@ -1,7 +1,7 @@
 <h1>Users</h1>
 <% @users.each do |user| %>
   <div>
-      <div><%= image_tag(user.photo, width: 50) %></div>
+      <div><%= image_tag(user.photo, width: 100) %></div>
       <%= link_to(user_path(user)) do %>
       <div><%= user.name %></div>
       <% end %>
