@@ -7,12 +7,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :create, :new] do
       resources :comments, only: [:create, :new]
       post 'like', on: :member
-      # resources :likes, only: [:create]
   end
 end
-  resources :posts do
-
-  end
-  
   # Define your other application routes here
 end
