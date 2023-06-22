@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   def like
     @post = Post.find(params[:id])
     @like = Like.new(author_id: params[:user_id], post_id: @post.id)
-    
+
     if @like.save
       redirect_to user_post_path(user_id: params[:user_id], id: params[:id]), notice: 'Like added successfully'
     else
@@ -27,8 +27,7 @@ class PostsController < ApplicationController
       render 'posts/show'
     end
   end
-  
-  
+
   def create
     @post = Post.new(post_params)
     @post.author_id = current_user.id
