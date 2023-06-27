@@ -4,12 +4,10 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments).order(created_at: :desc).limit(5)
-    @current_user = current_user
   end
 
   def show
     @post = Post.find(params[:id])
-    @current_user = current_user
   end
 
   def new
