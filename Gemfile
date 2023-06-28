@@ -82,6 +82,6 @@ end
 #   gem 'database_cleaner-active_record'
 # end
 
-gem "devise", "~> 4.9"
+gem 'devise', '~> 4.9'
 
-gem "letter_opener", group: :development
+gem 'letter_opener', group: :development
