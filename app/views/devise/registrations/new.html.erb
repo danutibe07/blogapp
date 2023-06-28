@@ -1,19 +1,19 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'signup-form' }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  <h2 class="signup-title">Sign up</h2>
 
+  <div class="field">
+    <%= f.hidden_field :photo, value: 'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80' %>
+    <%= f.hidden_field :bio, value: '' %>
+    <%= f.hidden_field :role, value: 'user' %>
+    <%= f.hidden_field :posts_counter, value: 0 %>
+  </div>
 
- <div class="field">
-  <%= f.hidden_field :photo, value: 'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80' %>
-  <%= f.hidden_field :bio, value: '' %>
-  <%= f.hidden_field :role, value: 'user' %>
-  <%= f.hidden_field :posts_counter, value: 0 %>
- <%= f.label :name %><br />
-<%= f.text_field :name, autofocus: true %>
-</div>
-
-
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -23,7 +23,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
@@ -34,8 +34,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up" , class: "login-button"%>
   </div>
 <% end %>
 
+<div class = "share-links">
 <%= render "devise/shared/links" %>
+</div>

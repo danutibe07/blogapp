@@ -48,3 +48,26 @@
   padding-top: 20px ;
   padding-left: 37%;
 }
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-form h2 {
+  text-align: center;
+}
+
+.signup-form .field {
+  margin-bottom: 10px;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
+  width: 400px;
+  height: 30px;
+  font-size: 16px;
+}
