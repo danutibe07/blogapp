@@ -11,6 +11,10 @@
   <header>
     <nav>
       <!-- Navigation links -->
+      <% if user_signed_in? %>
+      <a href="<%= destroy_user_session_path %>" data-method="delete">Sign Out</a>
+      
+    <% end %>
     </nav>
   </header>
 
@@ -23,3 +27,5 @@
   </footer>
 </body>
 </html>
+
+
