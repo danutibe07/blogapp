@@ -12,3 +12,39 @@
   background-color: #ffe5e5;
   color: #d73a49;
 }
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form h2 {
+  text-align: center;
+}
+
+.login-form .field {
+  margin-bottom: 10px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 400px;
+  height: 30px;
+  font-size: 16px;
+}
+
+.login-button{
+  width: 400px;
+  height: 30px;
+  font-size: 16px; 
+}
+
+.share-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 20px ;
+  padding-left: 37%;
+}
