@@ -39,6 +39,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    # Destroy all comments
+    @post.comments.destroy_all if @post.comments.exists?
+    # Destroy all likes
+    @post.likes.destroy_all if @post.likes.exists?
+    @post.destroy
+    redirect_to user_posts_path(user_id: current_user.id)
+  end
+
   private
 
   def post_params

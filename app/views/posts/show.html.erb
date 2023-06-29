@@ -1,30 +1,40 @@
-<h2>details</h2>
+<button>
+  <%= link_to "See all posts", user_posts_path(@user) %>
+</button>
+<h2>Details</h2>
 <div>
   <div> 
     <p>  
-      <strong> <%= @post.title %> </strong>
-      <span> 
+      <strong><%= @post.title %></strong>
+      <span>
         Comments: <%= @post.comments_counter %>,
-        Likes : <%= @post.likes_counters %>  
-      </span> 
+        Likes: <%= @post.likes_counters %>  
+      </span>
     </p>
-     <p> <%= @post.text %> </p>
-     <div>
-     <%= form_with(model: @post, url: like_user_post_path(user_id: @current_user.id, id: @post.id), method: :post, local: true) do |form| %>
-      <%= form.button type: :submit, class: 'like-button' do %>
-        Add Like
+    <p><%= @post.text %></p>
+    <div>
+      <%= form_with(model: @post, url: like_user_post_path(user_id: @current_user.id, id: @post.id), method: :post, local: true) do |form| %>
+        <%= form.button type: :submit, class: 'like-button' do %>
+          Add Like
+        <% end %>
+      <% end %>
+
+      <% if current_user.admin? || can?(:destroy, @post) %>
+        <%= button_to 'Delete', post_path(@post), method: :delete %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='comments-content'>
+    <p><strong>Comments:</strong></p>
+    <% @post.recent_comments.each do |comment| %>
+      <h3><%= comment.author.name %>: <%= comment.text %></h3>
+
+      <% if current_user.admin? || can?(:destroy, comment) %>
+        <%= button_to 'Delete', comment_path(comment), method: :delete %>
       <% end %>
     <% end %>
-    
+  </div>
 
+  <button><%= link_to 'Add Comment', new_user_post_comment_path(user_id: @current_user.id, post_id: @post.id) %></button>
 </div>
-     </div>
-     <div class='comments-content'>
-     <p><strong> Comments :</strong> </p>
-     <% @post.recent_comments.each do |comment| %>
-         <h3><%= comment.author.name %>: <%= comment.text %></h3>
-      <% end %>
-     </div>
-     </div>
-
-     <button> <%= link_to 'Add Comment', new_user_post_comment_path(user_id: @current_user.id, post_id: @post.id) %> </button>
