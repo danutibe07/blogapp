@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     end  
  end
 
- root 'home#index'
+ resources :posts
+ resources :comments, only: [:destroy]
 
+ root 'home#index'
+#  get 'posts', to: 'posts#index'
 end
