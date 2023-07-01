@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
   get 'home/index'
+  
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [] do
+        resources :posts, only: [:index] do
+          resources :comments, only: [:index, :create]
+        end
+      end
+    end
+  end
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # devise_for :users
   devise_for :users, controllers: { registrations: 'registrations' , sessions: 'sessions' }
